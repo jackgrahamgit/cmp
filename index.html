@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Tag Manager consent setup</title>
+
+    <!-- Google Consent Mode -->
+    <script data-cookieconsent="ignore">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag("consent", "default", {
+        ad_personalization: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "denied",
+        personalization_storage: "denied",
+        security_storage: "granted",
+        wait_for_update: 500
+      });
+      gtag("set", "ads_data_redaction", true);
+      gtag("set", "url_passthrough", true);
+    </script>
+    <!-- End Google Consent Mode-->
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -10,18 +33,17 @@
     <!-- End Google Tag Manager -->
 
     <!-- https://analytics.google.com/analytics/web/#/p453109897 -->
-     <!-- Measurement ID: G-3FV5SMMNQ6 -->
+    <!-- Measurement ID: G-3FV5SMMNQ6 -->
+    <!-- Domain Group: ec954644-2ebb-43e7-a28b-ff9ff096b2b9 -->
     
     <!-- <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="ec954644-2ebb-43e7-a28b-ff9ff096b2b9" data-blockingmode="auto" type="text/javascript"></script> -->
     <script
-    id="CookieDeclaration"
-    src="https://consent.cookiebot.com/ec954644-2ebb-43e7-a28b-ff9ff096b2b9/cd.js"
+    id="Cookiebot"
+    src="https://consent.cookiebot.com/uc.js"
+    data-cbid="ec954644-2ebb-43e7-a28b-ff9ff096b2b9"
+    data-blockingmode="auto"
     type="text/javascript"
     ></script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
