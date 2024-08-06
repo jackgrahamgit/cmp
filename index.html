@@ -38,6 +38,7 @@
                 'functionality_storage': 'granted',
                 'personalization_storage': 'granted'
             });
+            hideBanner();
         }
 
         // Update all consent states to denied
@@ -50,8 +51,38 @@
                 'functionality_storage': 'denied',
                 'personalization_storage': 'denied'
             });
+            hideBanner();
+        }
+
+        // Hide consent banner
+        function hideBanner() {
+            document.getElementById('consent-banner').style.display = 'none';
         }
     </script>
+    <style>
+        #consent-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            z-index: 1000;
+        }
+        #consent-banner button {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            background-color: #007bff;
+        }
+        #consent-banner button.reject {
+            background-color: #dc3545;
+        }
+    </style>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
