@@ -1,5 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="index.css"> -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        
+        if(localStorage.getItem('consentMode') === null){
+            gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'analytics_storage': 'denied',
+                'personalization_storage': 'denied',
+                'functionality_storage': 'denied',
+                'security_storage': 'denied',
+            });
+        } else {
+            gtag('consent', 'default', JSON.parse(localStorage.getItem('consentMode')));
+        }
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WCFVCSZ6');</script>
+    <!-- End Google Tag Manager -->
+    <title>My consent mode page</title>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHJNBK6" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <p>Test body</p>
+
+<div id="cookie-consent-banner" class="cookie-consent-banner">
+    <h3>Cookie settings</h3>
+    <p>We use cookies to provide you with the best possible experience. They also allow us to analyze user behavior in order to constantly improve the website for you.</p>
+    <button id="btn-accept-all" class="cookie-consent-button btn-success">Accept All</button>
+    <button id="btn-accept-some" class="cookie-consent-button btn-outline">Accept Selection</button>
+    <button id="btn-reject-all" class="cookie-consent-button btn-grayscale">Reject All</button>
+    <div class="cookie-consent-options">
+        <label><input id="consent-necessary" type="checkbox" value="Necessary" checked disabled>Necessary</label>
+        <label><input id="consent-analytics" type="checkbox" value="Analytics" checked>Analytics</label>
+        <label><input id="consent-preferences" type="checkbox" value="Preferences" checked>Preferences</label>
+        <label><input id="consent-marketing" type="checkbox" value="Marketing">Marketing</label>
+    </div>
+</div>
+
+<script>
+    function hideBanner() {
+        document.getElementById('cookie-consent-banner').style.display = 'none';
+    }
+
+    if (localStorage.getItem('consentMode') === null) {
+
+        document.getElementById('btn-accept-all').addEventListener('click', function() {
+            setConsent({
+                necessary: true,
+                analytics: true,
+                preferences: true,
+                marketing: true
+            });
+            hideBanner();
+        });
+        document.getElementById('btn-accept-some').addEventListener('click', function() {
+            setConsent({
+                necessary: true,
+                analytics: document.getElementById('consent-analytics').checked,
+                preferences: document.getElementById('consent-preferences').checked,
+                marketing: document.getElementById('consent-marketing').checked
+            });
+            hideBanner();
+        });
+        document.getElementById('btn-reject-all').addEventListener('click', function() {
+            setConsent({
+                necessary: false,
+                analytics: false,
+                preferences: false,
+                marketing: false
+            });
+            hideBanner();
+        });
+        document.getElementById('cookie-consent-banner').style.display = 'block';
+    }
+
+    function setConsent(consent) {
+        const consentMode = {
+            'functionality_storage': consent.necessary ? 'granted' : 'denied',
+            'security_storage': consent.necessary ? 'granted' : 'denied',
+            'ad_storage': consent.marketing ? 'granted' : 'denied',
+            'analytics_storage': consent.analytics ? 'granted' : 'denied',
+            'personalization_storage': consent.preferences ? 'granted' : 'denied',
+        };
+        gtag('consent', 'update', consentMode);
+        localStorage.setItem('consentMode', JSON.stringify(consentMode));
+    }
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+        <footer class="bg-light pb-4 pt-4">
+    <section class="pb-4 pt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h6>Google Analytics</h6>
+                    <p class="footer-description">Google Analytics is an enterprise-class web and app analytics
+                        application used by marketers, advertisers, and site and app owners across the web and in mobile
+                        apps.</p>
+                    <div class="footer-description">
+                        <a href="https://www.youtube.com/channel/UCJ5UyIAa5nEGksjcdp43Ixw" class="text-reset"
+                            target="_blank">Videos</a>&emsp;
+                        <a href="https://support.google.com/analytics" class="text-reset"
+                            target="_blank">Support</a>&emsp;
+                        <a href="https://github.com/googleanalytics" class="text-reset" target="_blank">GitHub</a>&emsp;
+                        <a href="/about" class="text-reset">About</a>&emsp;
+                        <a href="/newsletter" class="text-reset">Newsletter</a>
+                    </div>
+                </div>
+
+                <div class="col-md-5 offset-md-1 mb-3">
+                    <form id="newsletter-form-footer" action="/thank-you">
+                        <h5>Subscribe to our newsletter</h5>
+                        <p>This is a demo and does not save your email.</p>
+                        <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                            <label for="newsletter1" class="visually-hidden">Email address</label>
+                            <input id="email" name="email" type="text" class="form-control" placeholder="Email address">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Tag Manager consent setup</title>
 
