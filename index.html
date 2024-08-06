@@ -94,8 +94,13 @@
 
     <div id="cookie-consent-banner">
         <h3>Cookie settings</h3>
-        <button id="btn-accept-all" class="cookie-consent-button btn-success" onclick="allConsentGranted()">Accept All</button>
-        <button id="btn-reject-all" class="cookie-consent-button btn-grayscale" onclick="allConsentDenied()">Reject All</button>
+        <button id="btn-accept-all" onclick="allConsentGranted()">Accept All</button>
+        <button class="reject" id="btn-reject-all" onclick="allConsentDenied()">Reject All</button>
     </div>
 </body>
 </html>
+
+<!-- 
+class="cookie-consent-button btn-success"
+class="cookie-consent-button btn-grayscale" 
+-->
